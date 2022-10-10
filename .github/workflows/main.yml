@@ -27,6 +27,9 @@ jobs:
         run: test/test
       - name: Clean Up
         run: |
+          cd build
+          make clean
+          cd ..
           rm -r build
   With-TEST_ALL-Disabled:
     runs-on: ubuntu-latest
@@ -57,4 +60,7 @@ jobs:
           test/twomass_pid
       - name: Clean Up
         run: |
+          cd build
+          make clean
+          cd ..
           rm -r build
