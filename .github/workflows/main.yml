@@ -23,10 +23,9 @@ jobs:
           cmake -DTEST_ALL=ON ..
           make -j
           ../test/test
+          cd ..
       - name: Clean Up
         run: |
-          make clean
-          cd ..
           rm -r build
   With-TEST_ALL-Disabled:
     runs-on: ubuntu-latest
@@ -52,8 +51,7 @@ jobs:
           ../test/toy_pid
           ../test/twomass_eso
           ../test/twomass_pid
+          cd ..
       - name: Clean Up
         run: |
-          make clean
-          cd ..
           rm -r build
