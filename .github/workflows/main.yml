@@ -1,0 +1,60 @@
+name: Test Code
+run-name: ${{ github.actor }} is testing code.
+on: [push]
+jobs:
+  With-TEST_ALL-Enabled:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
+    steps:
+      - run: echo "The job triggered by ${{ github.event_name }} event, run on ${{ runner.os }} server."
+      - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: sudo apt install libeigen3-dev
+      - run: echo "Build with TEST_ALL Enabled."
+      - name: Build with TEST_ALL enabled
+        run: |
+          mkdir build
+          cd build
+          cmake -DTEST_ALL=ON ..
+          make -j
+          cd ..
+      - name: Test Run
+        run: test/test
+      - name: Clean Up
+        run: |
+          rm -r build
+  With-TEST_ALL-Disabled:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: .
+    steps:
+      - run: echo "The job triggered by ${{ github.event_name }} event, run on ${{ runner.os }} server."
+      - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: sudo apt install libeigen3-dev
+      - run: echo "Build with TEST_ALL Disabled."
+      - name: Build with TEST_ALL disabled
+        run: |
+          mkdir build
+          cd build
+          cmake ..
+          make -j
+          cd ..
+      - name: Test Run
+        run: |
+          test/toy_eso
+          test/toy_pid
+          test/twomass_eso
+          test/twomass_pid
+      - name: Clean Up
+        run: |
+          rm -r build
