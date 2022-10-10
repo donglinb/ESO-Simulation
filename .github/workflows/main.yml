@@ -14,7 +14,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Install Dependencies
-        run: apt install libeigen3-dev
+        run: sudo apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Enabled."
       - name: Build with TEST_ALL enabled
         run: |
@@ -40,7 +40,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Install Dependencies
-        run: apt install libeigen3-dev
+        run: sudo apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Disabled."
       - name: Build with TEST_ALL disabled
         run: |
