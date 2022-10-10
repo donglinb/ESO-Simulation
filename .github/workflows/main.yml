@@ -1,5 +1,5 @@
 name: Test Code
-run-name ${{github.actor}} is testing code.
+run-name: ${{ github.actor }} is testing code.
 on: [push]
 jobs:
   With TEST_ALL Enabled:
