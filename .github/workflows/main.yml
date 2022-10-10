@@ -13,12 +13,14 @@ jobs:
       - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Enabled."
       - name: Build with TEST_ALL enabled
         run: |
           mkdir build
           cd build
-          cmake -DTEST_ALL ..
+          cmake -DTEST_ALL=ON ..
           make -j
           ../test/test
       - name: Clean Up
@@ -37,6 +39,8 @@ jobs:
       - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Disabled."
       - name: Build with TEST_ALL disabled
         run: |
