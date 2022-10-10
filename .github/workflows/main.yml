@@ -22,8 +22,9 @@ jobs:
           cd build
           cmake -DTEST_ALL=ON ..
           make -j
-          ../test/test
           cd ..
+      - name: Test Run
+        run: test/test
       - name: Clean Up
         run: |
           rm -r build
@@ -47,11 +48,13 @@ jobs:
           cd build
           cmake ..
           make -j
-          ../test/toy_eso
-          ../test/toy_pid
-          ../test/twomass_eso
-          ../test/twomass_pid
           cd ..
+      - name: Test Run
+        run: |
+          test/toy_eso
+          test/toy_pid
+          test/twomass_eso
+          test/twomass_pid
       - name: Clean Up
         run: |
           rm -r build
