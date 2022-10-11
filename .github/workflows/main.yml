@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing code.
 on: [push]
 jobs:
   With-TEST_ALL-Enabled:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
@@ -32,7 +32,7 @@ jobs:
           cd ..
           rm -r build
   With-TEST_ALL-Disabled:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     defaults:
       run:
         shell: bash
