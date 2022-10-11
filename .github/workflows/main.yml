@@ -1,5 +1,5 @@
-name: Test Code
-run-name: ${{ github.actor }} is testing code.
+name: Test Code on Self-Hosted Runner
+run-name: ${{ github.actor }} is testing code on self-hosted runner.
 on: [push]
 jobs:
   With-TEST_ALL-Enabled:
@@ -13,8 +13,8 @@ jobs:
       - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Install Dependencies
-        run: sudo apt install libeigen3-dev
+      # - name: Install Dependencies
+      #   run: sudo apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Enabled."
       - name: Build with TEST_ALL enabled
         run: |
@@ -42,8 +42,8 @@ jobs:
       - run: echo "The name of repository is ${{ github.repository}}, branch is ${{ github.ref }}."
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Install Dependencies
-        run: sudo apt install libeigen3-dev
+      # - name: Install Dependencies
+      #   run: sudo apt install libeigen3-dev
       - run: echo "Build with TEST_ALL Disabled."
       - name: Build with TEST_ALL disabled
         run: |
